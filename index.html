@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For Chucheeee 🤍</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Playfair+Display:wght@400;600;700&family=Nunito:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+  font-family:'Nunito',sans-serif;
+  background:#212842;
+  min-height:100vh;
+  overflow-x:hidden;
+}
+
+/* ===== FLOATING WHITE HEARTS (OVER EVERYTHING) ===== */
+.heart{
+  position:fixed;
+  bottom:-20px;
+  color:white;
+  font-size:22px;
+  opacity:.9;
+  animation:floatUp linear infinite;
+  pointer-events:none;
+  z-index:9999;
+}
+@keyframes floatUp{
+  0%{transform:translateY(0);opacity:0}
+  10%{opacity:1}
+  100%{transform:translateY(-120vh);opacity:0}
+}
+
+/* ===== MAIN CARD ===== */
+.card{
+  position:relative;
+  max-width:1000px;
+  margin:60px auto;
+  background:#F0E7D5;
+  border-radius:40px;
+  padding:60px 40px;
+  box-shadow:0 30px 80px rgba(0,0,0,.4);
+}
+
+h1,h2{
+  font-family:'Pacifico';
+  text-align:center;
+  color:#212842;
+}
+
+.screen{display:none}
+.screen.active{display:block}
+
+/* BUTTON */
+.btn{
+  border:none;
+  padding:14px 32px;
+  border-radius:30px;
+  cursor:pointer;
+  font-size:16px;
+  background:#212842;
+  color:#F0E7D5;
+  transition:.3s;
+}
+.btn:hover{transform:scale(1.05)}
+
+.start img{
+  display:block;
+  margin:30px auto;
+  width:200px;
+  border-radius:20px;
+}
+
+/* MENU */
+.menu{
+  display:flex;
+  flex-direction:column;
+  gap:30px;
+  margin-top:50px;
+}
+
+.gift-card{
+  background:#ffffff;
+  border-radius:25px;
+  padding:40px;
+  text-align:center;
+  cursor:pointer;
+  box-shadow:0 20px 50px rgba(0,0,0,.25);
+  transition:.3s;
+}
+.gift-card:hover{transform:translateY(-10px)}
+.gift-card span{
+  font-size:40px;
+  display:block;
+}
+.gift-card p{
+  font-family:'Pacifico';
+  font-size:22px;
+  margin-top:10px;
+  color:#212842;
+}
+
+/* GIFT 1 */
+.poem-container{
+  max-width:700px;
+  margin:40px auto;
+  text-align:center;
+}
+.poem-photo{
+  width:280px;
+  height:350px;
+  object-fit:cover;
+  border-radius:20px;
+  margin-bottom:30px;
+  box-shadow:0 15px 40px rgba(0,0,0,.3);
+}
+.poem-title{
+  font-family:'Playfair Display',serif;
+  font-weight:700;
+  font-size:22px;
+  margin-bottom:20px;
+}
+.poem{
+  font-family:'Playfair Display',serif;
+  font-weight:700;
+  line-height:1.9;
+  font-size:19px;
+  white-space:pre-line;
+  color:#212842;
+}
+
+/* GIFT 2 */
+.letter-box{
+  max-width:700px;
+  margin:40px auto;
+  padding:40px;
+  background:#ffffff;
+  border-radius:25px;
+  box-shadow:0 20px 50px rgba(0,0,0,.25);
+  font-family:'Playfair Display';
+  line-height:1.9;
+  color:#212842;
+}
+
+/* SIGNATURE STYLING */
+.signature{
+  margin-top:40px;
+  text-align:right;
+}
+.signature .xoxo{
+  font-family:'Pacifico';
+  font-size:32px;
+  color:#212842;
+  margin-bottom:5px;
+}
+.signature .always{
+  font-family:'Playfair Display';
+  font-size:20px;
+  font-weight:700;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  color:#212842;
+}
+
+/* MEMORIES GRID */
+.memories-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:30px;
+  margin-top:40px;
+}
+.memory-card{
+  background:#ffffff;
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:0 15px 40px rgba(0,0,0,.3);
+}
+.memory-card img,
+.memory-card video{
+  width:100%;
+  height:320px;
+  object-fit:cover;
+  display:block;
+}
+.memory-caption{
+  padding:15px;
+  text-align:center;
+  font-family:'Pacifico';
+  font-size:18px;
+  color:#212842;
+}
+
+.back{margin-top:40px;text-align:center}
+</style>
+</head>
+
+<body>
+
+<!-- AUDIO (NO AUTOPLAY TO AVOID ERROR) -->
+<audio id="bgMusic" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+/* WHITE HEARTS EVERYWHERE */
+for(let i=0;i<100;i++){
+ let h=document.createElement("div");
+ h.className="heart";
+ h.innerHTML="🤍";
+ h.style.left=Math.random()*100+"vw";
+ h.style.animationDuration=4+Math.random()*8+"s";
+ document.body.appendChild(h);
+}
+</script>
+
+<div class="card">
+
+<!-- SCREEN 1 -->
+<div class="screen start active" id="screen1">
+<h1>Chucheeee 🤍</h1>
+<h2>Will you be the “Mr. Shakya” to my Mrs ?</h2>
+<img src="hug.png">
+<div style="text-align:center;margin-top:30px">
+<button class="btn" onclick="yes()">YES</button>
+<button class="btn" id="no">NO</button>
+</div>
+</div>
+
+<!-- SCREEN 2 -->
+<div class="screen" id="screen2">
+<h1>Yay, you said yes 🤍</h1>
+<div class="menu">
+<div class="gift-card" onclick="openGift(1)"><span>💋</span><p>Gift 1</p></div>
+<div class="gift-card" onclick="openGift(2)"><span>💐</span><p>Gift 2</p></div>
+<div class="gift-card" onclick="openGift(3)"><span>⭐</span><p>Gift 3</p></div>
+</div>
+</div>
+
+<!-- GIFT 1 -->
+<div class="screen" id="gift1">
+<h1>For You 🤍</h1>
+<div class="poem-container">
+<img src="poemphoto.jpg" class="poem-photo">
+
+<div class="poem-title">
+Will you be the mac to my ariana and let’s not blame the stars this time ?
+</div>
+
+<div class="poem">
+The Reality of You
+I feel a spark I’ve never known,
+A seed of love that’s finally grown.
+But when you look me in the eyes,
+I want to run, I want to hide.
+
+I have so much I long to give,
+A thousand ways for us to live.
+Yet when I speak, the words go wrong,
+I stumble through our nervous song.
+
+A second feels just like a day,
+Whenever you are far away.
+I tell you that my love is small,
+To hide the fact I’ve given all.
+
+The dream is waking, bright and true,
+I’m terrified it’s really you.
+No more a ghost or distant star,
+Let’s not blame it on the stars?
+</div>
+</div>
+<div class="back">
+<button class="btn" onclick="back()">Back</button>
+</div>
+</div>
+
+<!-- GIFT 2 -->
+<div class="screen" id="gift2">
+<h1>Chucheeee 🤍</h1>
+<div class="letter-box">
+Your full letter text here...
+
+<div class="signature">
+<div class="xoxo">XOXO</div>
+<div class="always">Always, Forever</div>
+</div>
+
+</div>
+<div class="back">
+<button class="btn" onclick="back()">Back</button>
+</div>
+</div>
+
+<!-- GIFT 3 -->
+<div class="screen" id="gift3">
+<h1>Our Memories 🤍</h1>
+<div class="memories-grid">
+
+<div class="memory-card"><img src="memory1.jpg"><div class="memory-caption">Us</div></div>
+<div class="memory-card"><img src="memory2.jpg"><div class="memory-caption">Always</div></div>
+<div class="memory-card"><img src="memory3.jpg"><div class="memory-caption">Forever</div></div>
+<div class="memory-card"><img src="memory4.jpg"><div class="memory-caption">My Favorite</div></div>
+
+<div class="memory-card">
+<video controls><source src="video1.mp4" type="video/mp4"></video>
+<div class="memory-caption">Our Moment</div>
+</div>
+
+<div class="memory-card">
+<video controls><source src="video2.mp4" type="video/mp4"></video>
+<div class="memory-caption">My Heart</div>
+</div>
+
+</div>
+<div class="back">
+<button class="btn" onclick="back()">Back</button>
+</div>
+</div>
+
+</div>
+
+<script>
+function show(id){
+ document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+ document.getElementById(id).classList.add('active');
+}
+
+function yes(){
+ show('screen2');
+ const music = document.getElementById("bgMusic");
+ music.play().catch(error => {
+   console.log("Autoplay blocked:", error);
+ });
+}
+
+function openGift(n){show('gift'+n)}
+function back(){show('screen2')}
+
+const no=document.getElementById("no");
+no.addEventListener("mouseover",()=>{
+ no.style.position="absolute";
+ no.style.left=Math.random()*60+"%";
+ no.style.top=Math.random()*60+"%";
+});
+</script>
+
+</body>
+</html>
+
+
+
